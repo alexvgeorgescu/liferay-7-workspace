@@ -59,6 +59,9 @@ public class PrivacyAdminPortlet extends MVCPortlet {
 		String privacyInfoMessageArticleId = ParamUtil.getString(
 			actionRequest, "privacyInfoMessageArticleId");
 
+		String privacyPolicyFriendlyURL = ParamUtil.getString(
+				actionRequest, "privacyPolicyFriendlyURL");
+
 		boolean privacyEnabled = ParamUtil.getBoolean(
 			actionRequest, "privacyEnabled", false);
 
@@ -76,6 +79,8 @@ public class PrivacyAdminPortlet extends MVCPortlet {
 				"privacyPolicyArticleId", privacyPolicyArticleId);
 			preferences.setValue(
 				"privacyInfoMessageArticleId", privacyInfoMessageArticleId);
+			preferences.setValue(
+					"privacyPolicyFriendlyURL", privacyPolicyFriendlyURL);
 			preferences.setValue(
 				"privacyEnabled", String.valueOf(privacyEnabled));
 			preferences.setValue(

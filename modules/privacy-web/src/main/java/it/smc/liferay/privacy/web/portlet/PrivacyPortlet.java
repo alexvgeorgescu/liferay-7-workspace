@@ -13,7 +13,7 @@ import it.smc.liferay.privacy.web.util.PrivacyPortletKeys;
 	property = {
 		"com.liferay.portlet.add-default-resource=true",
 		"com.liferay.portlet.css-class-wrapper=smc-privacy-portlet",
-		"com.liferay.portlet.display-category=category.hidden",
+		"com.liferay.portlet.display-category=category.tools",
 		"com.liferay.portlet.header-portlet-css=/css/main.css",
 		"com.liferay.portlet.instanceable=false",
 		"com.liferay.portlet.preferences-owned-by-group=true",

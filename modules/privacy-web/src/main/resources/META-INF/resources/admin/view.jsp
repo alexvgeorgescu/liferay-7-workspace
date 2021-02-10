@@ -51,6 +51,8 @@ String[] staticPortlets = PropsUtil.getArray(PropsKeys.LAYOUT_STATIC_PORTLETS_AL
 
 					<aui:input name="privacyPolicyArticleId" label="privacy-policy-web-content-id" value="<%= privacyPolicyArticleId %>" />
 
+					<aui:input name="privacyPolicyFriendlyURL" label="privacy-policy-friendly-url" value="<%= privacyPolicyFriendlyURL %>" />
+
 					<aui:input name="privacyInfoMessageArticleId" label="privacy-info-web-content-id" value="<%= privacyInfoMessageArticleId %>" />
 
 					<aui:input name="cookieExpiration" label="cookie-expiration" value="<%= String.valueOf(cookieExpiration) %>" />

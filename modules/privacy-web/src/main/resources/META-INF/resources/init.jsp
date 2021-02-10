@@ -39,6 +39,8 @@ String privacyInfoMessageArticleId = adminSettings.getValue("privacyInfoMessageA
 
 String privacyPolicyArticleId = adminSettings.getValue("privacyPolicyArticleId", StringPool.BLANK);
 
+String privacyPolicyFriendlyURL = adminSettings.getValue("privacyPolicyFriendlyURL", StringPool.BLANK);
+
 int cookieExpiration = GetterUtil.getInteger(adminSettings.getValue("cookieExpiration", StringPool.BLANK),30);
 
 String nameExtend = String.valueOf(scopeGroupId) + adminSettings.getValue("nameExtend", StringPool.BLANK);

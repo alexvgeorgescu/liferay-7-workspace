@@ -7,6 +7,7 @@ import com.liferay.journal.model.JournalArticle;
 import com.liferay.journal.service.JournalArticleLocalServiceUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.model.Layout;
 import com.liferay.portal.kernel.service.PortletPreferencesLocalServiceUtil;
 import com.liferay.portal.kernel.util.CookieKeys;
 import com.liferay.portal.kernel.util.GetterUtil;
@@ -44,7 +45,7 @@ public class PrivacyUtil {
 	}
 
 	public static boolean showPrivacyInfoMessage(
-		boolean signedIn, boolean privacyEnabled, JournalArticle privacyPolicy,
+		boolean signedIn, boolean privacyEnabled, JournalArticle privacyPolicy, Layout privacyLayout,
 		HttpServletRequest request, String nameExtend) {
 
 		if (signedIn) {
@@ -58,10 +59,10 @@ public class PrivacyUtil {
 			return false;
 		}
 
-		if (Validator.isNull(privacyPolicy)) {
+		if (Validator.isNull(privacyPolicy) && Validator.isNull(privacyLayout)) {
 			if (_log.isWarnEnabled()) {
 				_log.warn(
-					"Privacy is enabled but no web content is set for " +
+					"Privacy is enabled but no web content or privacy layout is set for " +
 						"Privacy Policy!");
 			}
 
