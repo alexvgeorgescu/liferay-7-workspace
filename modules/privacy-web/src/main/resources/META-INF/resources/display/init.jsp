@@ -1,28 +1,24 @@
+
 <%--
 /**
- * Copyright (c) SMC Treviso Srl. All rights reserved.
+ * Copyright (c) 2013-present SMC Treviso Srl. All rights reserved.
+ *
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
  */
 --%>
-<%@page import="com.liferay.portal.kernel.service.LayoutLocalServiceUtil"%>
-<%@page import="com.liferay.portal.kernel.model.Layout"%>
 <%@ include file="/init.jsp" %>
 
 <%@ page import="com.liferay.journal.model.JournalArticle" %>
-<%@ page import="com.liferay.portal.kernel.portlet.LiferayWindowState" %>
-
-<%@ page import="java.util.HashMap" %>
-<%@ page import="java.util.Map" %>
 
 <%
-JournalArticle privacyPolicy = PrivacyUtil.getPrivacyJournalArticle(scopeGroupId, privacyPolicyArticleId);
-
-Layout privacyLayout = LayoutLocalServiceUtil.fetchLayoutByFriendlyURL(scopeGroupId, false, privacyPolicyFriendlyURL);
-
-String[] staticPortlets = PropsUtil.getArray(PropsKeys.LAYOUT_STATIC_PORTLETS_ALL);
-
-boolean staticIncluded  = ArrayUtil.contains(staticPortlets, PrivacyPortletKeys.PRIVACY);
-
-boolean showPrivacyInfoMessage = PrivacyUtil.showPrivacyInfoMessage(themeDisplay.isSignedIn(), privacyEnabled, privacyPolicy, privacyLayout, request, nameExtend);
+    JournalArticle privacyPolicy = PrivacyUtil.getPrivacyJournalArticle(scopeGroupId, privacyPolicyArticleId);
+    boolean showPrivacyInfoMessage = PrivacyUtil.showPrivacyInfoMessage(themeDisplay.isSignedIn(), privacyEnabled, privacyPolicy, request, nameExtend);
 %>
-
-

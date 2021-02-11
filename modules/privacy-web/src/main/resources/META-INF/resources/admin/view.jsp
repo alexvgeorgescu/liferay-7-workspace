@@ -1,14 +1,26 @@
 <%--
 /**
- * Copyright (c) SMC Treviso Srl. All rights reserved.
+ * Copyright (c) 2013-present SMC Treviso Srl. All rights reserved.
+ *
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
  */
 --%>
-<%@ include file="/init.jsp" %>
+<%@ include file="../init.jsp" %>
 
+<%@ page import="it.smc.liferay.privacy.web.util.PrivacyPortletKeys" %>
+<%@ page import="com.liferay.portal.kernel.util.*" %>
 <%
-String redirect = ParamUtil.getString(request, "redirect");
+	String redirect = ParamUtil.getString(request, "redirect");
 
-String[] staticPortlets = PropsUtil.getArray(PropsKeys.LAYOUT_STATIC_PORTLETS_ALL);
+	String[] staticPortlets = PropsUtil.getArray(PropsKeys.LAYOUT_STATIC_PORTLETS_ALL);
 %>
 
 <div class="container-fluid-1280" id="<portlet:namespace />settingsPanelId">
@@ -24,11 +36,11 @@ String[] staticPortlets = PropsUtil.getArray(PropsKeys.LAYOUT_STATIC_PORTLETS_AL
 			<aui:fieldset>
 
 				<aui:input
-					name="privacyEnabled"
-					label="privacy-enabled"
-					type="checkbox"
-					checked="<%= privacyEnabled %>"
-					onchange='<%= renderResponse.getNamespace() + "checkStatus()" %>'
+						name="privacyEnabled"
+						label="privacy-enabled"
+						type="checkbox"
+						checked="<%= privacyEnabled %>"
+						onchange='<%= renderResponse.getNamespace() + "checkStatus()" %>'
 				/>
 
 				<c:if test="<%= !ArrayUtil.contains(staticPortlets, PrivacyPortletKeys.PRIVACY) %>">
@@ -50,8 +62,6 @@ String[] staticPortlets = PropsUtil.getArray(PropsKeys.LAYOUT_STATIC_PORTLETS_AL
 				<aui:fieldset collapsible="<%= true %>" label="disclaimer-configuration">
 
 					<aui:input name="privacyPolicyArticleId" label="privacy-policy-web-content-id" value="<%= privacyPolicyArticleId %>" />
-
-					<aui:input name="privacyPolicyFriendlyURL" label="privacy-policy-friendly-url" value="<%= privacyPolicyFriendlyURL %>" />
 
 					<aui:input name="privacyInfoMessageArticleId" label="privacy-info-web-content-id" value="<%= privacyInfoMessageArticleId %>" />
 

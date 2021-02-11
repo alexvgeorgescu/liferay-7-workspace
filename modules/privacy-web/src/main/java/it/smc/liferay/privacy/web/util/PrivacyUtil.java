@@ -14,39 +14,36 @@ import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.PortletKeys;
 import com.liferay.portal.kernel.util.Validator;
 
+/**
+ * @author SMC Treviso
+ */
 public class PrivacyUtil {
 
 	public static final String PRIVACY_READ = "PRIVACY_READ";
 
-	public static PortletPreferences getPrivacyAdminSettings(
-		long companyId, long groupId) {
+	public static PortletPreferences getPrivacyAdminSettings(long companyId, long groupId) {
 
 		return PortletPreferencesLocalServiceUtil.getPreferences(
 			companyId, groupId, PortletKeys.PREFS_OWNER_TYPE_GROUP, 0,
 			PrivacyPortletKeys.PRIVACY_ADMIN);
 	}
 
-	public static JournalArticle getPrivacyJournalArticle(
-		long groupId, String articleId) {
-
+	public static JournalArticle getPrivacyJournalArticle(long groupId, String articleId) {
 		if (Validator.isNull(articleId) || Validator.isNull(groupId)) {
 			return null;
 		}
 
 		try {
 			return JournalArticleLocalServiceUtil.fetchArticle(
-				groupId, articleId);
+					groupId, articleId);
 		}
 		catch (Exception e) {
 			_log.error(e, e);
 		}
-
 		return null;
 	}
 
-	public static boolean showPrivacyInfoMessage(
-		boolean signedIn, boolean privacyEnabled, JournalArticle privacyPolicy, Layout privacyLayout,
-		HttpServletRequest request, String nameExtend) {
+	public static boolean showPrivacyInfoMessage(boolean signedIn, boolean privacyEnabled, JournalArticle privacyPolicy, HttpServletRequest request, String nameExtend) {
 
 		if (signedIn) {
 			return false;
@@ -59,18 +56,18 @@ public class PrivacyUtil {
 			return false;
 		}
 
-		if (Validator.isNull(privacyPolicy) && Validator.isNull(privacyLayout)) {
+		if (Validator.isNull(privacyPolicy)) {
 			if (_log.isWarnEnabled()) {
 				_log.warn(
-					"Privacy is enabled but no web content or privacy layout is set for " +
-						"Privacy Policy!");
+						"Privacy is enabled but no web content is set for " +
+								"Privacy Policy!");
 			}
 
 			return false;
 		}
 
 		long cookieValidationDateMillis = GetterUtil.getLong(
-			CookieKeys.getCookie(request, PRIVACY_READ + nameExtend));
+				CookieKeys.getCookie(request, PRIVACY_READ + nameExtend));
 
 		if (cookieValidationDateMillis == 0) {
 			return true;
